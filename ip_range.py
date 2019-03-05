@@ -14,3 +14,5 @@ source: google interview
 """
 
 
+def lookup(ip):
+    pass
