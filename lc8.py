@@ -2,7 +2,7 @@ import unittest
 import re
 
 
-def myAtoi(s) -> int:
+def myAtoi(s):
     INT_MAX = 2 ** 31 - 1
     INT_MIN = -2 ** 31
     m = re.search(r"^[+-]?\d+", s.lstrip())

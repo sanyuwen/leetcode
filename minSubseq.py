@@ -14,7 +14,7 @@ def min_subsequences(source, target):
         for i,k in enumerate(source):
             mmap[k].append(i)
 
-        ans, pre, i = 1, mmap[target[0]][0], 1
+        ans, pre = 1, mmap[target[0]][0]
         for t in target[1:]:
             ilist = mmap[t]
             index = bisect(ilist, pre)
