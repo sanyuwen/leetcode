@@ -51,8 +51,10 @@ registry = set()
 def register(active=True):
     def decorate(func):
         print('running register(active=%s)->decorate(%s)' % (active, func))
-        if active: registry.add(func)
-        else: registry.discard(func)
+        if active:
+            registry.add(func)
+        else:
+            registry.discard(func)
         return func
     return decorate
 
@@ -72,4 +74,4 @@ def f3():
 
 
 if __name__ == '__main__':
-    pass
+    print(registry)
