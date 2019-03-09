@@ -67,13 +67,14 @@ def lookup_1(ip, iparr, conversion):
 
 def main():
     iparr = prepare_iparr()
+    # ('1.0.1.1', '1.0.1.5', '1.0.1.20', '1.0.1.30', '1.0.1.35', '1.0.1.77', '1.0.2.0', '1.0.2.30', '1.0.2.50', '1.0.2.90')
     print(iparr)
     query = ("1.0.1.3", "1.0.2.10", "1.0.1.80", "1.0.22.22", "1.0.1.30", '1.0.1.77')
     ans = -1
     for q in query:
-        # idx, is_equal = lookup_1(q, iparr, base256_to_base10)
+        idx, is_equal = lookup_1(q, iparr, base256_to_base10)
         # idx, is_equal = lookup_1(q, iparr, base256_to_base10_alt)
-        idx, is_equal = lookup_1(q, iparr, ip_to_32binarystr)
+        # idx, is_equal = lookup_1(q, iparr, ip_to_32binarystr)
         print(idx, is_equal)
         if (idx % 2 == 0 and is_equal) or idx % 2 == 1:
             ans = int(idx / 2)
