@@ -1,5 +1,5 @@
 """
-given a positive int n, return str with n '(' or ')' which are valid.
+given a positive int n, return str with n '(' and ')' which are valid.
 """
 
 
