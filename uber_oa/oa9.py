@@ -6,6 +6,7 @@ from typing import List
 from collections import defaultdict, Counter
 
 
+# brute force
 def solve(A: List[int]) -> int:
     n = len(A)
     # 2 pointers
