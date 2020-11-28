@@ -11,9 +11,17 @@ def solve(A: List[int]) -> int:
         if stack and stack[-1] == a:
             stack.pop()
             ans += 1
+        else:
+            stack.append(a)
     return ans
 
 
 if __name__ == '__main__':
     A = [3, 4, 5, 5, 4, 6]
     assert solve(A) % 2 == 0
+
+    A2 = [3, 5, 5, 4, 4, 6, 6]
+    assert solve(A2) % 2 == 1
+
+    A3 = [3, 4, 5, 5, 4, 6]
+    assert solve(A3) % 2 == 0
