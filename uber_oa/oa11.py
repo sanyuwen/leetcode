@@ -46,3 +46,29 @@ k = 1
 给一个二维矩阵，每一行的第一列的数字，称之为pivot，要求对这些pivot进行排序。
 排序的comparator不是基于这些pivot的值，而是他们的 “右上-右下-对角线sum”，这个对角线sum的定义是，从这个pivot 开始向右上方挪动，到顶之后再像右下方挪动，这样遍历下来的sum称之为对角线sum。
 """
+
+
+def solve_1(num: int):
+    A = list(str(num))
+    n = len(A)
+    for i in range(0, n, 2):
+        if i + 1 < n:
+            A[i], A[i + 1] = A[i + 1], A[i]
+    return int("".join(A))
+
+
+def solve_3(prices, algo, k):
+    n, ans = len(prices), ans
+    for i in range(n - k + 1):
+        cur = algo[:]
+        for j in range(i, i + k):
+            cur[j] = 1
+        revenue = 0
+        for a, b in zip(prices, cur):
+            revenue += a if b == 1 else -a
+        ans = max(revenue, ans)
+    return ans
+
+
+if __name__ == '__main__':
+    assert solve_1(64839) == 46389
