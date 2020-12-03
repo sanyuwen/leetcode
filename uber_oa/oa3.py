@@ -44,8 +44,36 @@ def solve(A: List[str], r: int, c: int) -> List[str]:
     C = [transform_row(list(row)) for row in A]
     ans = []
     for i in range(c):
-        ans.append("".join([C[j][i] for j in range(r-1, -1, -1)]))
+        ans.append("".join([C[j][i] for j in range(r - 1, -1, -1)]))
     return ans
+
+
+def solve2(B: List[str]):
+    A = [list(row) for row in B]
+    r, c = len(A), len(A[0])
+
+    def helper(pre, i, j):
+        m, n = pre + 1, i - 1
+        while m < n:
+            while m < n and A[m][j] == '。':
+                m += 1
+            while m < n and A[n][j] == '#':
+                n -= 1
+            if m < n:
+                A[m][j], A[n][j] = A[n][j], A[m][j]
+                m += 1
+                n -= 1
+
+    for j in range(c):
+        i, pre = 0, -1
+        while i < r:
+            if A[i][j] == '*':
+                helper(pre, i, j)
+                pre = i
+            i += 1
+        helper(pre, r, j)
+    for row in A:
+        print("".join(row))
 
 
 if __name__ == '__main__':
@@ -53,3 +81,17 @@ if __name__ == '__main__':
     B = solve(A, 3, 5)
     for b in B:
         print(b)
+    print()
+    """
+    # #   #  。 。
+    *  #  #  。 。
+    #  。 *  #  #
+    。#。*  。 。
+    """
+    C = [
+        "###。。",
+        "*##。。",
+        "#。*##",
+        "。#。。。"
+    ]
+    solve2(C)
